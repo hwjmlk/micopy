@@ -1,0 +1,1 @@
+"use strict";function getStyle(t,e){return(window.getComputedStyle?getComputedStyle(t,null):t.currentStyle)[e]}function move(e,r,n,l,a){clearInterval(e.timer);var t=parseInt(getStyle(e,r));n<t&&(l=-l),e.timer=setInterval(function(){var t=parseInt(getStyle(e,r))+l;(l<0&&t<n||0<l&&n<t)&&(t=n),e.style[r]=t+"px",t==n&&(clearInterval(e.timer),a&&a())},30)}
