@@ -57,23 +57,18 @@ gulp.task('js', async () => {
         .pipe(connect.reload())
 });
 
-
-// 压缩图片
+// 复制图片
 gulp.task('img', async () => {
     await gulp.src('./src/images/*')
-        // .src('src/img/**/*.+(png|jpg|jpeg|gif|svg)')
-        // .pipe(
-        //     imagemin({
-        //         optimizationLevel: 5, //类型：Number  默认：3  取值范围：0-7（优化等级）
-        //         progressive: true, //类型：Boolean 默认：false 无损压缩jpg图片
-        //         interlaced: true, //类型：Boolean 默认：false 隔行扫描gif进行渲染
-        //         muiltipase: true //类型：Boolean 默认：false 多次优化svg直到完全优化
-        //     })
-        // )
         .pipe(gulp.dest('./dist/images'))
 })
+//复制字体
+gulp.task('fonts', async () => {
+    await gulp.src('./src/fonts/*')
+        .pipe(gulp.dest('./dist/fonts'))
+})
 
-
+// 清理dist
 gulp.task('clean', async () => {
     await del(['dist/*']);
 })
