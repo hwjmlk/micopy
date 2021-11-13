@@ -5,7 +5,7 @@ const uglify = require('gulp-uglify'); // js压缩
 const sass = require('gulp-sass')(require('sass')); // scc编译
 const htmlmin = require('gulp-htmlmin'); //html压缩
 const connect = require('gulp-connect'); // 服务
-// const imagemin = require('gulp-imagemin') // 图片压缩
+const imagemin = require('gulp-imagemin') // 图片压缩
 const del = require('del') // 清空目录
 const cleancss = require('gulp-clean-css') //css压缩
 
@@ -92,6 +92,6 @@ gulp.task('watch', function () {
     gulp.watch('./src/img/*', gulp.series('img'))
 })
 // 构建项目
-gulp.task('dist', gulp.series('clean', gulp.parallel('index', 'html', 'scss', 'css', 'js', 'img')));
+gulp.task('dist', gulp.series('clean', gulp.parallel('index', 'html', 'scss', 'css', 'js', 'img','fonts')));
 //启动开发环境 gulp.series是顺序执行 gulp.parallel是同步执行
 gulp.task('default', gulp.series(gulp.parallel('dist','watch', 'connect')));
