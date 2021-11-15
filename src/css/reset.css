@@ -3,19 +3,89 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, menu, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-main, menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+menu,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -23,79 +93,117 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, main, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section {
 	display: block;
 }
+
 /* HTML5 hidden-attribute fix for newer browsers */
 *[hidden] {
-    display: none;
+	display: none;
 }
+
 body {
 	line-height: 1;
 }
-menu, ol, ul ,li{
+
+menu,
+ol,
+ul,
+li {
 	list-style: none;
 }
-blockquote, q {
+
+blockquote,
+q {
 	quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
 
 /* custom */
-a{
-	color: #7e8c8d;
+a {
 	text-decoration: none;
-  }
-  ::-webkit-scrollbar{
+}
+
+::-webkit-scrollbar {
 	width: 5px;
 	height: 5px;
-  }
-  ::-webkit-scrollbar-track-piece{
+}
+
+::-webkit-scrollbar-track-piece {
 	background-color: rgba(0, 0, 0, 0.2);
-  }
-  ::-webkit-scrollbar-thumb:vertical{
+}
+
+::-webkit-scrollbar-thumb:vertical {
 	height: 5px;
-	background-color: rgba(125, 125, 125, 0.7);
-  }
-  ::-webkit-scrollbar-thumb:horizontal{
+	background-color: pink;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
 	width: 5px;
-	background-color: rgba(125, 125, 125, 0.7);
-  }
-  html, body{
+	background-color: pink;
+}
+
+html,
+body {
 	width: 100%;
 	font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", "微软雅黑", sans-serif;
-  }
-  body{
+}
+
+body {
 	line-height: 1;
 	-webkit-text-size-adjust: none;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  }
+}
 
-  /*清除浮动*/
-  .clearfix:before,
-  .clearfix:after{
+/*清除浮动*/
+.clearfix:before,
+.clearfix:after {
 	content: " ";
 	display: inline-block;
 	height: 0;
 	clear: both;
 	visibility: hidden;
-  }
-  .clearfix{
+}
+
+.clearfix {
 	*zoom: 1;
-  }
+}
 
-  /*隐藏*/
-  .dn{
+/*隐藏*/
+.dn {
 	display: none;
-  }
+}
 
+/* 浮动 */
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}

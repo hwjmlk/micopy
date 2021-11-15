@@ -36,6 +36,12 @@ body {
             margin-right: 10px;
         }
 
+        // b {
+        //     color: #c3c3c3;
+        //     font-size: 24px;
+        //     margin-left: 5px;
+
+        // }
     }
 
     .nav {
@@ -149,8 +155,11 @@ body {
             font-size: 22px;
             margin-right: 15px;
             cursor: pointer;
+            // color: #494949;
+
         }
-        .register{
+
+        .login{
             color: #494949;
         }
 
@@ -172,6 +181,7 @@ body {
         line-height: 20px;
         vertical-align: top;
         position: relative;
+
         // overflow: hidden;
         .input {
             width: 354px;
@@ -183,6 +193,7 @@ body {
             height: 60px;
             background-color: #151515;
             outline-color: #fd6d1c;
+
             &:focus {
                 background-color: #0f0f0f;
             }
@@ -202,20 +213,20 @@ body {
 
         }
 
-        p{
+        p {
             color: #6f2e09;
             font-size: 12px;
-            margin: 10px 0 0 ;
+            margin: 10px 0 0;
         }
 
-        .focus{
+        .focus {
             font-size: 12px;
             top: -15px;
         }
 
     }
 
-    .accept-terms{
+    .accept-terms {
         margin: 20px 0;
     }
 
@@ -239,6 +250,7 @@ body {
         border-radius: 5px;
         border: none;
         font-size: 18px;
+
 
         &:hover {
             background-color: #643c22;

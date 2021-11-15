@@ -5,7 +5,7 @@ const uglify = require('gulp-uglify'); // js压缩
 const sass = require('gulp-sass')(require('sass')); // scc编译
 const htmlmin = require('gulp-htmlmin'); //html压缩
 const connect = require('gulp-connect'); // 服务
-const imagemin = require('gulp-imagemin') // 图片压缩
+// const imagemin = require('gulp-imagemin') // 图片压缩
 const del = require('del') // 清空目录
 const cleancss = require('gulp-clean-css') //css压缩
 
@@ -29,10 +29,10 @@ gulp.task('html', async () => {
 });
 // scss编译成css
 gulp.task("scss", async () => {
-    await gulp.src('./src/scss/*.scss')
+    await gulp.src('./src/sass/*.scss')
         .pipe(sass().on('error', sass.logError))
-        // .pipe(gulp.dest('./dist/css'))
         .pipe(gulp.dest('./src/css'))
+
 });
 // css合并压缩
 gulp.task("css", async () => {
@@ -50,7 +50,6 @@ gulp.task('js', async () => {
     await gulp.src('./src/js/*.js')
         .pipe(babel({
             presets: ['@babel/env']
-            // presets: ['es2015']
         }))
         .pipe(uglify())
         .pipe(gulp.dest('./dist/js'))
@@ -76,10 +75,10 @@ gulp.task('clean', async () => {
 //服务
 gulp.task('connect', function () {
     connect.server({
-        root: "src",
+        root: "dist",
         port: 8080,
         livereload: true,
-        host:'0.0.0.0'
+        // host:'0.0.0.0'
     });
 });
 //监视文件， 自动执行
@@ -92,6 +91,6 @@ gulp.task('watch', function () {
     gulp.watch('./src/img/*', gulp.series('img'))
 })
 // 构建项目
-gulp.task('dist', gulp.series('clean', gulp.parallel('index', 'html', 'scss', 'css', 'js', 'img','fonts')));
+gulp.task('dist', gulp.series('clean', gulp.parallel('index', 'html', 'scss', 'css', 'js', 'img', 'fonts')));
 //启动开发环境 gulp.series是顺序执行 gulp.parallel是同步执行
-gulp.task('default', gulp.series(gulp.parallel('dist','watch', 'connect')));
+gulp.task('default', gulp.series(gulp.parallel( 'watch', 'connect')));
