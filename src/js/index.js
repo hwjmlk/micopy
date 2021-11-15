@@ -116,3 +116,15 @@ function topFun() {
 J_atop.onclick = function () {
     topFun();
 }
+
+$.ajax({
+    type: "get",
+    url: "php/getGoodsList.php",
+    data: {
+        "typeId": "001"
+    },
+    dataType: "json",
+    success: function (response) {
+        console.log(response);
+    }
+});
