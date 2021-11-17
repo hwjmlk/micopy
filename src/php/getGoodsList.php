@@ -11,16 +11,16 @@
 	// echo "typeId".$typeId;
 	//2、数据保存在数据库中
 	include("./conndb.php");
-	
+
 	//3）、传输数据（过桥）
 	$sqlstr = "select gi.*,gt.goodstype
 				 from goodsInfo as gi,goodstype as gt
 			    where 1=1
 				  and gt.typeId = gi.typeId ";
-				  
+
 	if($typeId!=""){
 		$sqlstr .= " and gi.typeId='$typeId'";
-	}	
+	}
 	$sqlstr .= " order by gi.goodsId";
 
 	$result = mysqli_query($conn,$sqlstr);//执行查询的sql语句后，有返回值，返回的是查询结果
@@ -33,9 +33,9 @@
 	//查询行数
     $query_num =mysqli_num_rows($result);
     //echo "行数：".$query_num;
-	
+
 	$str="[";
-	
+
 	$query_row = mysqli_fetch_array($result);//游标下移,拿出结果集中的某一行，返回值是拿到的行；
 	while($query_row){
 		$str = $str.'{ "goodsId":"'.$query_row[0].'","goodsName":"'.$query_row[1].'"
@@ -49,7 +49,7 @@
 		,"beiyong10":"'.$query_row[16].'","beiyong11":"'.$query_row[17].'"
 		,"beiyong12":"'.$query_row[18].'","beiyong13":"'.$query_row[19].'"
 		}';
-		
+
 		$query_row = mysqli_fetch_array($result);
 		if($query_row){
 			$str = $str.",";
@@ -58,7 +58,7 @@
 	$str = $str."]";
 	//4、关闭数据库
 	mysqli_close($conn);
-	
+
 	//3、给客户端返回商品的json数组！
 	echo $str;
 

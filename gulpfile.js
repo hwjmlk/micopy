@@ -90,7 +90,7 @@ gulp.task('connect', function () {
 });
 //监视文件， 自动执行
 gulp.task('watch', function () {
-    gulp.watch('./src/scss/*.scss', gulp.series('scss'))
+    gulp.watch('./src/sass/*.scss', gulp.series('scss'))
     gulp.watch('./src/css/*.css', gulp.series('css'))
     gulp.watch('./src/js/*.js', gulp.series('js'))
     gulp.watch('./src/index.html', gulp.series('index'))

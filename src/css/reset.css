@@ -189,7 +189,7 @@ body {
 	clear: both;
 	visibility: hidden;
 }
-
+/* 兼容ie6 7 */
 .clearfix {
 	*zoom: 1;
 }
@@ -206,4 +206,10 @@ body {
 
 .fr {
 	float: right;
+}
+
+/* 版心 */
+.w {
+	width: 1226px;
+	margin: 0 auto;
 }

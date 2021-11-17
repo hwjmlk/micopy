@@ -96,8 +96,16 @@ setInterval(function () {
 var J_atop = document.getElementById("J_atop");
 // 当网页向下滑动 854px 出现"返回顶部" 按钮
 window.onscroll = function () {
+    if (document.documentElement.clientHeight<=700) {
+        $('.home-tool-bar').hide()
+    }else{
+        $('.home-tool-bar').show()
+
+    }
     scrollFun()
 };
+
+
 
 function scrollFun() {
     if (document.body.scrollTop > 854 || document.documentElement.scrollTop > 854) {
@@ -120,7 +128,7 @@ J_atop.onclick = function () {
 for (let i = 0; i < 8; i++) {
     $.ajax({
         type: "get",
-        url: "php/getGoodsList.php",
+        url: "../php/getGoodsList.php",
         data: {
             "typeId": `00${i+1}`
         },
@@ -131,7 +139,7 @@ for (let i = 0; i < 8; i++) {
                     <em></em>
                     <a href="javascript:;">
                         <div class="figure figure-none">
-                            <img src="${v.goodsImg}"
+                            <img src=".${v.goodsImg}"
                                 alt="${v.goodsName}" width="160" height="110">
                         </div>
                         <div class="title">${v.goodsName}</div>
@@ -147,7 +155,7 @@ for (let i = 0; i < 8; i++) {
 for (let i = 9; i <= 18; i++) {
     $.ajax({
         type: "get",
-        url: "php/getGoodsList.php",
+        url: "../php/getGoodsList.php",
         data: {
             "typeId": i>=10?`0${i}`:`00${i}`
         },
@@ -164,7 +172,7 @@ for (let i = 9; i <= 18; i++) {
                     if (index < res.length) {
                         str += ` <li class="com-li">
                             <a href="javascript:;" class="link clearfix">
-                            <img src="${res[index]["goodsImg"]}" width="40" height="40">
+                            <img src=".${res[index]["goodsImg"]}" width="40" height="40">
                             <span class="text">${res[index]["goodsName"]}</span>
                             </a>
                         </li>`
@@ -180,6 +188,4 @@ for (let i = 9; i <= 18; i++) {
 
     });
 }
-
-
 
