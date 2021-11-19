@@ -1,6 +1,7 @@
 <?php
 	header("Content-Type:text/html;charset=utf-8");
-	$vipName   = $_REQUEST['vipName'];
+	$vipName   = $_REQUEST['vipname'];
+	// echo $vipName;
 	
 	//2、数据保存在数据库中
 	include("./conndb.php");
@@ -13,6 +14,7 @@
 
 	$result = mysqli_query($conn,$sqlstr);//执行查询的sql语句后，有返回值，返回的是查询结果
 		
+	
 	if(!$result){
 		die("SQL语句执行失败".mysqli_error());
 	}

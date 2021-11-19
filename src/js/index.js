@@ -97,6 +97,12 @@ var J_atop = document.getElementById("J_atop");
 // 当网页向下滑动 854px 出现"返回顶部" 按钮
 window.onscroll = function () {
     scrollFun()
+    if (document.documentElement.clientHeight <= 700) {
+        $('.home-tool-bar').hide()
+    } else {
+        $('.home-tool-bar').show()
+
+    }
 };
 
 function scrollFun() {
@@ -149,7 +155,7 @@ for (let i = 9; i <= 18; i++) {
         type: "get",
         url: "php/getGoodsList.php",
         data: {
-            "typeId": i>=10?`0${i}`:`00${i}`
+            "typeId": i >= 10 ? `0${i}` : `00${i}`
         },
         dataType: "json",
         success: function (res) {
@@ -182,4 +188,77 @@ for (let i = 9; i <= 18; i++) {
 }
 
 
+$.ajax({
+    type: "get",
+    url: "php/getGoodsType.php",
+    // data: "data",
+    dataType: "json",
+    success: function (res) {
+        // console.log(res);
+    }
+});
 
+$.ajax({
+    type: "get",
+    url: "php/getGoodsListNew.php",
+    data: {
+        "typeId": "001",
+        "count": "7"
+    },
+    dataType: "json",
+    success: function (res) {
+        // console.log(res);
+    }
+});
+
+
+$.ajax({
+    type: "get",
+    url: "php/getGoodsList.php",
+    data: {
+        "typeId": "019"
+    },
+    dataType: "json",
+    success: function (res) {
+        $.each(res, function (i, v) {
+            // console.log(v);
+            $(`<li class="brick-item brick-item-m brick-item-m-2">
+                <a href="html/detail.html?${v.goodsId}">
+                    <div class="figure figure-img">
+                        <img src="${v.goodsImg}" alt="">
+                    </div>
+                    <h3 class="title">${v.goodsName}</h3>
+                    <p class="desc">${v.goodsDesc}</p>
+                    <p class="price">
+                        <span class="num">${v.beiyong1}</span>
+                    </p>
+                </a>
+            </li>`).appendTo(".brick-list-1")
+        });
+    }
+});
+// $.ajax({
+//     type: "get",
+//     url: "php/getGoodsList.php",
+//     data: {
+//         "typeId": "013"
+//     },
+//     dataType: "json",
+//     success: function (res) {
+//         $.each(res, function (i, v) {
+//             console.log(v);
+//             $(`<li class="brick-item brick-item-m brick-item-m-2">
+//                 <a href="html/detail.html?${v.goodsId}">
+//                     <div class="figure figure-img">
+//                         <img src="${v.goodsImg}" alt="">
+//                     </div>
+//                     <h3 class="title">${v.goodsName}</h3>
+//                     <p class="desc">${v.goodsDesc}</p>
+//                     <p class="price">
+//                         <span class="num">${v.beiyong1}</span>
+//                     </p>
+//                 </a>
+//             </li>`).appendTo(".brick-list-2")
+//         });
+//     }
+// });

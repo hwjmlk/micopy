@@ -1,0 +1,205 @@
+.container {
+  width: 1226px;
+  margin: 0 auto;
+}
+
+header {
+  font-size: 12px;
+  border-bottom: 2px solid #ff6700;
+  background: #fff;
+  color: #b0b0b0;
+  position: relative;
+  z-index: 20;
+  height: 100px;
+}
+header .container {
+  height: 74px;
+}
+header .container .header-logo {
+  width: 93px;
+  margin-top: 26px;
+  float: left;
+}
+header .container .header-logo .logo {
+  position: relative;
+  display: block;
+  width: 48px;
+  height: 48px;
+  overflow: hidden;
+  text-indent: -999px;
+}
+header .container .header-logo .logo::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  width: 48px;
+  height: 48px;
+  content: "";
+  background: url(https://s02.mifile.cn/assets/static/image/logo-mi2.png) no-repeat;
+  background-size: 48px 48px;
+}
+header .container h2 {
+  float: left;
+  line-height: 48px;
+  margin-top: 26px;
+  font-size: 28px;
+  font-weight: 400;
+  color: #424242;
+}
+header .container p {
+  float: left;
+  height: 20px;
+  line-height: 20px;
+  margin-top: 40px;
+  margin-left: 15px;
+  color: #757575;
+  display: none;
+}
+header .container .topbar-info {
+  position: relative;
+  right: 0;
+  float: right;
+  height: 40px;
+  line-height: 40px;
+  margin-top: 30px;
+}
+header .container .topbar-info a {
+  padding: 0 3px;
+}
+
+.page-main {
+  padding: 38px 0;
+  background: #f5f5f5;
+}
+.page-main .empty-cart {
+  height: 273px;
+  padding-left: 558px;
+  margin: 65px 0 130px;
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/staticsfile/cart/cart-empty.png) no-repeat 124px 0;
+  color: #b0b0b0;
+  overflow: hidden;
+}
+.page-main .empty-cart .login-tip {
+  height: 54px;
+  margin: 70px 0 0 0;
+  font-size: 36px;
+  font-weight: bold;
+}
+.page-main .empty-cart .login-desc {
+  margin: 0;
+  font-size: 20px;
+  color: #b0b0b0;
+}
+.page-main .empty-cart .btn {
+  font-size: 14px;
+  margin-top: 20px;
+  width: 170px;
+  height: 48px;
+  line-height: 48px;
+  background: #ff6700;
+  color: #fff;
+  display: inline-block;
+  text-align: center;
+  margin-right: 10px;
+}
+.page-main .empty-cart .btn-go {
+  margin-right: 0;
+  background-color: #f5f5f5;
+  color: #ff6700;
+  border: #ff6700 1px solid;
+}
+.page-main h2 {
+  position: relative;
+  height: 50px;
+  font-size: 30px;
+  color: #757575;
+}
+.page-main h2 span {
+  position: absolute;
+  top: -20px;
+  left: 372px;
+  height: 40px;
+  width: 482px;
+  line-height: 40px;
+  text-align: center;
+  display: block;
+  background-color: #f5f5f5;
+}
+.page-main .recommend-list {
+  margin-left: -14px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.page-main .recommend-list .recommend-item {
+  width: 234px;
+  height: 300px;
+  margin: 0 0 14px 14px;
+  background-color: #fff;
+  text-align: center;
+  position: relative;
+  font-size: 14px;
+}
+.page-main .recommend-list .recommend-item:hover .recommend-action {
+  opacity: 1;
+  transform: translateY(-20px);
+}
+.page-main .recommend-list .recommend-item:hover .recommend-action a {
+  background-color: #ff6700;
+  color: #fff;
+}
+.page-main .recommend-list .recommend-item img {
+  display: block;
+  margin: 40px auto 40px;
+  width: 140px;
+}
+.page-main .recommend-list .recommend-item .recommend-name {
+  margin: 0 10px 10px;
+  height: 18px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #333;
+}
+.page-main .recommend-list .recommend-item .recommend-price {
+  margin-bottom: 10px;
+  color: #ff6700;
+}
+.page-main .recommend-list .recommend-item .recommend-tips {
+  margin-top: 15px;
+  color: #757575;
+}
+.page-main .recommend-list .recommend-item .recommend-action {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  opacity: 0;
+  transition: all 0.4s;
+}
+.page-main .recommend-list .recommend-item .recommend-action a {
+  width: 122px;
+  height: 30px;
+  line-height: 30px;
+  background-color: #fff;
+  border: 1px solid #ff6700;
+  display: inline-block;
+  color: #ff6700;
+}
+.page-main .recommend-list .recommend-item .recommend-notice {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  background-color: #83c44e;
+  opacity: 0;
+  transform: translate3d(0, -10px, 0);
+  transition: all 0.2s linear;
+}
+.page-main .recommend-list .recommend-item .recommend-notice a {
+  color: #fff;
+}

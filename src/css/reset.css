@@ -147,6 +147,7 @@ table {
 /* custom */
 a {
 	text-decoration: none;
+	color: #7e8c8d;
 }
 
 ::-webkit-scrollbar {
@@ -184,10 +185,8 @@ body {
 .clearfix:before,
 .clearfix:after {
 	content: " ";
-	display: inline-block;
-	height: 0;
+	display: table;
 	clear: both;
-	visibility: hidden;
 }
 /* 兼容ie6 7 */
 .clearfix {
@@ -212,4 +211,8 @@ body {
 .w {
 	width: 1226px;
 	margin: 0 auto;
+}
+
+.ir{
+	text-indent: -999px;
 }
