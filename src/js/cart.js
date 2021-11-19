@@ -1,5 +1,6 @@
 $(function () {
     render()
+    // total()
 });
 
 function render() {
@@ -9,32 +10,36 @@ function render() {
         function (data, textStatus, jqXHR) {
             let str = ""
             $.each(data, function (i, v) {
+               let price = parseInt(v.beiyong1);
+            //    console.log(price);
                 str += `
-            <div class="list-item">
-            <div class="col col-check">
-                <input type="checkbox" name="checkbox">
-            </div>
-            <div class="col col-img">
-                <img src=".${v.goodsImg}"
-                    width="80" height="80"></div>
-            <div class="col col-name">
-                <h3 class="name"><a href="javascript:void(0)">${v.goodsName}</a></h3>
-            </div>
-            <div class="col col-price">${v.beiyong1}</div>
-            <div class="col col-num">
-                <div class="change-goods-num">
-                    <a href="javascript:void(0)" class="min">-</a>
-                    <input type="text" index=${v.goodsId} class="goods-num" value="${v.goodsCount}">
-                    <a href="javascript:void(0)" class="add">+</a>
+                <div class="list-item">
+                <div class="col col-check">
+                    <input type="checkbox" name="checkbox">
                 </div>
+                <div class="col col-img">
+                    <img src=".${v.goodsImg}"
+                        width="80" height="80"></div>
+                <div class="col col-name">
+                    <h3 class="name"><a href="javascript:void(0)">${v.goodsName}</a></h3>
+                </div>
+                <div class="col col-price">${price}</div>
+                <div class="col col-num">
+                    <div class="change-goods-num">
+                        <a href="javascript:void(0)" class="min">-</a>
+                        <input type="text" index=${v.goodsId} class="goods-num" value="${v.goodsCount}">
+                        <a href="javascript:void(0)" class="add">+</a>
+                    </div>
+                </div>
+                <div class="col col-total xj">${price*v.goodsCount}元</div>
+                <div class="col col-action">
+                    <a href="javascript:void(0);" class="del" index=${v.goodsId}> x</a></div>
             </div>
-            <div class="col col-total xj">${v.beiyong1}</div>
-            <div class="col col-action">
-                <a href="javascript:void(0);" class="del" index=${v.goodsId}> x</a></div>
-        </div>
             `
                 $(".list-body").html(str)
             });
+
+            total()
 
 
             $(function () {
@@ -47,6 +52,8 @@ function render() {
                     $("input[name=checkbox]").each(function () {
                         this.checked = flag;
                     });
+
+                    total()
                 });
 
                 $("input[name=checkbox]").click(function () {
@@ -58,6 +65,7 @@ function render() {
                     } else {
                         $("#allcheck").get(0).checked = false;
                     }
+                    total()
                 });
             })
         },
@@ -107,18 +115,6 @@ $(".list-body").on("click", ".del", function () {
         }
     });
 })
-$(".list-body").on("change", ".goods-num", function () {
-    $.get("../php/updateGoodsCount.php", {
-            "vipName": getCookie("vipName"),
-            "goodsId": $(this).attr("index"),
-            "goodsCount": $(this).val()
-        },
-        function (data, textStatus, jqXHR) {
-            // console.log(data);
-        },
-        "json"
-    );
-})
 
 
 
@@ -146,13 +142,37 @@ $(".recommend-list").on("click", ".recommend-action", function () {
 
 })
 
+$(".list-body").on("change", ".goods-num", function () {
+    let n = $(this).val()
+    let price = $(this).parents(".col-num").siblings(".col-price").html()
+    let num = n * price
+    $(this).parents(".col-num").siblings(".col-total").html(num+'元')
+
+    $.get("../php/updateGoodsCount.php", {
+            "vipName": getCookie("vipName"),
+            "goodsId": $(this).attr("index"),
+            "goodsCount": $(this).val()
+        },
+        function (data, textStatus, jqXHR) {
+            // console.log(data);
+        },
+        "json"
+    );
+    total()
+})
+
+
 $(".list-body").on("click", ".min", function () {
     let n = $(this).siblings(".goods-num").val()
     if (n <= 1) {
         n = 1
     } else {
+        let price = $(this).parents(".col-num").siblings(".col-price").html()
+        let n = $(this).siblings(".goods-num").val()
         n--
+        let num = n*price
         $(this).siblings(".goods-num").val(n)
+        $(this).parents(".col-num").siblings(".col-total").html(num+'元')
         $.get("../php/updateGoodsCount.php", {
                 "vipName": getCookie("vipName"),
                 "goodsId": $(this).siblings(".goods-num").attr("index"),
@@ -168,11 +188,13 @@ $(".list-body").on("click", ".min", function () {
 })
 
 $(".list-body").on("click", ".add", function () {
-    // console.log( $(this).siblings(".goods-num").attr("index"));
+
+    let price = $(this).parents(".col-num").siblings(".col-price").html()
     let n = $(this).siblings(".goods-num").val()
-    // console.log(n);
     n++
+    let num = n*price
     $(this).siblings(".goods-num").val(n)
+    $(this).parents(".col-num").siblings(".col-total").html(num+'元')
     $.get("../php/updateGoodsCount.php", {
             "vipName": getCookie("vipName"),
             "goodsId": $(this).siblings(".goods-num").attr("index"),
@@ -187,14 +209,13 @@ $(".list-body").on("click", ".add", function () {
     total()
 })
 
-function sum() {
-
-}
 
 function total() {
     let sum = 0
-    $.each($('.xj'), function (i, v) {
+    let heji = $("input[name=checkbox]:checked").parents().siblings(".xj")
+    $.each($(heji), function (i, v) {
         let a = v.innerHTML
         sum += parseInt(a)
     });
+    $(".total-price em").html(sum)
 }
