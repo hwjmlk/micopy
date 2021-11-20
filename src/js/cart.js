@@ -10,8 +10,8 @@ function render() {
         function (data, textStatus, jqXHR) {
             let str = ""
             $.each(data, function (i, v) {
-               let price = parseInt(v.beiyong1);
-            //    console.log(price);
+                let price = parseInt(v.beiyong1);
+                //    console.log(price);
                 str += `
                 <div class="list-item">
                 <div class="col col-check">
@@ -99,21 +99,23 @@ for (let index = 0; index < 8; index++) {
 
 
 $(".list-body").on("click", ".del", function () {
-    confirm("真的要删除吗")
-    $.ajax({
-        type: "get",
-        url: "../php/deleteGoods.php",
-        data: {
-            "vipName": getCookie("vipName"),
-            "goodsId": $(this).attr("index")
-        },
-        dataType: "json",
-        success: function (res) {
-            if (res == 1) {
-                render()
+    if (confirm("真的要删除吗")) {
+        $.ajax({
+            type: "get",
+            url: "../php/deleteGoods.php",
+            data: {
+                "vipName": getCookie("vipName"),
+                "goodsId": $(this).attr("index")
+            },
+            dataType: "json",
+            success: function (res) {
+                if (res == 1) {
+                    render()
+                }
             }
-        }
-    });
+        });
+    }
+
 })
 
 
@@ -146,7 +148,7 @@ $(".list-body").on("change", ".goods-num", function () {
     let n = $(this).val()
     let price = $(this).parents(".col-num").siblings(".col-price").html()
     let num = n * price
-    $(this).parents(".col-num").siblings(".col-total").html(num+'元')
+    $(this).parents(".col-num").siblings(".col-total").html(num + '元')
 
     $.get("../php/updateGoodsCount.php", {
             "vipName": getCookie("vipName"),
@@ -170,9 +172,9 @@ $(".list-body").on("click", ".min", function () {
         let price = $(this).parents(".col-num").siblings(".col-price").html()
         let n = $(this).siblings(".goods-num").val()
         n--
-        let num = n*price
+        let num = n * price
         $(this).siblings(".goods-num").val(n)
-        $(this).parents(".col-num").siblings(".col-total").html(num+'元')
+        $(this).parents(".col-num").siblings(".col-total").html(num + '元')
         $.get("../php/updateGoodsCount.php", {
                 "vipName": getCookie("vipName"),
                 "goodsId": $(this).siblings(".goods-num").attr("index"),
@@ -192,9 +194,9 @@ $(".list-body").on("click", ".add", function () {
     let price = $(this).parents(".col-num").siblings(".col-price").html()
     let n = $(this).siblings(".goods-num").val()
     n++
-    let num = n*price
+    let num = n * price
     $(this).siblings(".goods-num").val(n)
-    $(this).parents(".col-num").siblings(".col-total").html(num+'元')
+    $(this).parents(".col-num").siblings(".col-total").html(num + '元')
     $.get("../php/updateGoodsCount.php", {
             "vipName": getCookie("vipName"),
             "goodsId": $(this).siblings(".goods-num").attr("index"),
