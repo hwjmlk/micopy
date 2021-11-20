@@ -102,7 +102,6 @@
 }
 .product-box .img-left {
   width: 606px;
-  position: relative;
 }
 .product-box .img-left .product-imglist {
   position: relative;
@@ -112,6 +111,20 @@
   top: 0;
 }
 .product-box .img-left .product-imglist .img-box img {
+  width: 560px;
+  height: 560px;
+}
+.product-box .img-right {
+  width: 606px;
+}
+.product-box .img-right .product-imglist {
+  position: relative;
+}
+.product-box .img-right .product-imglist .img-box {
+  position: absolute;
+  top: 0;
+}
+.product-box .img-right .product-imglist .img-box img {
   width: 560px;
   height: 560px;
 }

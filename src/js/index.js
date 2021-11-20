@@ -237,28 +237,41 @@ $.ajax({
         });
     }
 });
-// $.ajax({
-//     type: "get",
-//     url: "php/getGoodsList.php",
-//     data: {
-//         "typeId": "013"
-//     },
-//     dataType: "json",
-//     success: function (res) {
-//         $.each(res, function (i, v) {
-//             console.log(v);
-//             $(`<li class="brick-item brick-item-m brick-item-m-2">
-//                 <a href="html/detail.html?${v.goodsId}">
-//                     <div class="figure figure-img">
-//                         <img src="${v.goodsImg}" alt="">
-//                     </div>
-//                     <h3 class="title">${v.goodsName}</h3>
-//                     <p class="desc">${v.goodsDesc}</p>
-//                     <p class="price">
-//                         <span class="num">${v.beiyong1}</span>
-//                     </p>
-//                 </a>
-//             </li>`).appendTo(".brick-list-2")
-//         });
-//     }
-// });
+$.ajax({
+    type: "get",
+    url: "php/getGoodsList.php",
+    data: {
+        "typeId": "013"
+    },
+    dataType: "json",
+    success: function (res) {
+        $.each(res, function (i, v) {
+            // console.log(v);
+            $(`<li class="brick-item brick-item-m brick-item-m-2">
+                <a href="html/detail.html?${v.goodsId}">
+                    <div class="figure figure-img">
+                        <img src="${v.goodsImg}" alt="">
+                    </div>
+                    <h3 class="title">${v.goodsName}</h3>
+                    <p class="desc">${v.goodsDesc}</p>
+                    <p class="price">
+                        <span class="num">${v.beiyong1}</span>
+                    </p>
+                </a>
+            </li>`).appendTo(".brick-list-2")
+        });
+    }
+});
+
+let username = $.cookie("vipName")
+if (username) {
+    console.log(1);
+    $(".topbar-info-1").hide()
+    $(".topbar-info-2").show()
+    $(".user").html(`欢迎你${username}`)
+} else {
+    console.log(2);
+    $(".topbar-info-1").show()
+    $(".topbar-info-2").hide()
+}
+

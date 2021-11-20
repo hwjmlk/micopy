@@ -210,6 +210,44 @@ $(".list-body").on("click", ".add", function () {
 })
 
 
+
+
+
+
+
+
+
+
+$(function () {
+    let len = $("input[name=checkbox]").length;
+    let length = $("input[name=checkbox]:checked").length;
+    $(".cart-total-1").html(len)
+
+    $("#allcheck").click(function () {
+        let flag = this.checked
+        $("input[name=checkbox]").each(function () {
+            this.checked = flag;
+        });
+
+        total()
+    });
+
+    $("input[name=checkbox]").click(function () {
+        let length = $("input[name=checkbox]:checked").length;
+        let len = $("input[name=checkbox]").length;
+        $(".cart-total-2").html(length)
+        if (length == len) {
+            $("#allcheck").get(0).checked = true;
+        } else {
+            $("#allcheck").get(0).checked = false;
+        }
+        total()
+    });
+})
+
+
+
+
 function total() {
     let sum = 0
     let heji = $("input[name=checkbox]:checked").parents().siblings(".xj")

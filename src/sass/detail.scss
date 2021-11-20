@@ -119,7 +119,25 @@
 
     .img-left {
         width: 606px;
-        position: relative;
+        // position: relative;
+
+        .product-imglist {
+            position: relative;
+
+            .img-box {
+                position: absolute;
+                top: 0;
+
+                img {
+                    width: 560px;
+                    height: 560px;
+                }
+            }
+        }
+    }
+    .img-right {
+        width: 606px;
+        // position: relative;
 
         .product-imglist {
             position: relative;

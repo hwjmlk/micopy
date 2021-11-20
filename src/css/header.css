@@ -86,6 +86,7 @@
     line-height: 40px;
 }
 
+
 .topbar-nav .topbar-download {
     position: relative;
 }
@@ -106,6 +107,7 @@
     line-height: 1;
     transition: height .3s;
 }
+
 
 .appcode img {
     display: block;
@@ -437,3 +439,4 @@
     border-right: 1px solid #e0e0e0;
     height: 90px;
 }
+

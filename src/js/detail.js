@@ -42,3 +42,11 @@ $(".btn-primary").click(function(){
         }
     });
 })
+
+let option =  $(".option")
+// console.log(option);
+for (let i = 0; i < option.length; i++) {
+    const ele = option[i];
+    // console.log(ele);
+
+}

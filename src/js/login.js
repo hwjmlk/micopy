@@ -20,13 +20,18 @@ $(".submit").click(function (e) {
                 "userpass": $("#pass").val()
             },
             function (data, textStatus, jqXHR) {
-                $.cookie('vipName', $("#user").val(), { expires: 7 });
-                console.log(data);
                 if (data == "success") {
-                    location.href = "../index.html"
-                } else {
-                    alert("登录失败请重新登录")
-                };
+                    $.cookie('vipName', $("#user").val(), {
+                        expires: 7,
+                        path: '/'
+                    });
+                    console.log(data);
+                    if (data == "success") {
+                        location.href = "../index.html"
+                    } else {
+                        alert("登录失败请重新登录")
+                    };
+                }
             },
             // "json"
         );
@@ -35,4 +40,3 @@ $(".submit").click(function (e) {
     }
 
 });
-
